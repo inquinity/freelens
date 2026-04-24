@@ -36,6 +36,7 @@ export interface KubectlDependencies {
     readonly downloadBinariesPath?: string;
     readonly downloadKubectlBinaries: boolean;
     readonly downloadMirror: string;
+    readonly kubectlDownloadMirrorUrl?: string;
   };
   readonly bundledKubectlVersion: string;
   readonly kubectlVersionMap: Map<string, string>;
@@ -381,7 +382,9 @@ export class Kubectl {
   }
 
   protected getDownloadMirror(): string {
-    // MacOS packages are only available from default
+    if (this.dependencies.state.kubectlDownloadMirrorUrl) {
+      return this.dependencies.state.kubectlDownloadMirrorUrl;
+    }
 
     const { url } =
       packageMirrors.get(this.dependencies.state.downloadMirror) ?? packageMirrors.get(defaultPackageMirror)!;

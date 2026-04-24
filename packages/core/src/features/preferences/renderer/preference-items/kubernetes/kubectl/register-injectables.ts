@@ -9,6 +9,7 @@
 import { registerInjectables as registerKubectlBinaryDownloadInjectables } from "./kubectl-binary-download/register-injectables";
 import { registerInjectables as registerKubectlDirectoryForBinariesInjectables } from "./kubectl-directory-for-binaries/register-injectables";
 import { registerInjectables as registerKubectlDownloadMirrorInjectables } from "./kubectl-download-mirror/register-injectables";
+import { registerInjectables as registerKubectlDownloadMirrorUrlInjectables } from "./kubectl-download-mirror-url/register-injectables";
 import kubectlGroupPreferenceItemInjectable from "./kubectl-group-preference-item.injectable";
 import { registerInjectables as registerKubectlPathToBinaryInjectables } from "./kubectl-path-to-binary/register-injectables";
 
@@ -32,6 +33,11 @@ export function registerInjectables(di: DiContainerForInjection): void {
   }
   try {
     registerKubectlDownloadMirrorInjectables(di);
+  } catch (e) {
+    /* Ignore duplicate registration */
+  }
+  try {
+    registerKubectlDownloadMirrorUrlInjectables(di);
   } catch (e) {
     /* Ignore duplicate registration */
   }

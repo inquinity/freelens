@@ -83,6 +83,10 @@ const userPreferenceDescriptorsInjectable = getInjectable({
         fromStore: (val) => val,
         toStore: (val) => val || undefined,
       }),
+      kubectlDownloadMirrorUrl: getPreferenceDescriptor<string | undefined>({
+        fromStore: (val) => val,
+        toStore: (val) => val || undefined,
+      }),
       helmBinariesPath: getPreferenceDescriptor<string | undefined>({
         fromStore: (val) => val,
         toStore: (val) => val || undefined,
