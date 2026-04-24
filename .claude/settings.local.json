@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs -I {} sh -c 'echo \"=== {} ===\" && cat {}')",
+      "Read(//Users/robert/.claude/**)",
+      "Bash(grep -E \"\\\\.\\(json|mjs|ts\\)$\")",
+      "Bash(git config *)",
+      "Bash(git check-ignore *)",
+      "Bash(pnpm --version)",
+      "Bash(pnpm build *)",
+      "Bash(pnpm build:app:dir)",
+      "Bash(pnpm start *)",
+      "Bash(git remote *)",
+      "Bash(node -e ' *)",
+      "Bash(pnpm test:unit:core --testPathPattern=\"kubectl-download-mirror-url|kubectl.test\")"
+    ]
+  }
+}
