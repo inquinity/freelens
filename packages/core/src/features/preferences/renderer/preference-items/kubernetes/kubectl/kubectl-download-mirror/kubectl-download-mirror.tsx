@@ -18,13 +18,16 @@ interface Dependencies {
   state: UserPreferencesState;
 }
 
-const downloadMirrorOptions = Array.from(packageMirrors, ([name, mirror]) => ({
-  value: name,
-  label: mirror.label,
+const downloadMirrorOptions = [
+  ...Array.from(packageMirrors, ([name, mirror]) => ({
+    value: name,
+    label: mirror.label,
 
-  // TODO: Side-effect
-  isDisabled: !mirror.platforms.has(process.platform),
-}));
+    // TODO: Side-effect
+    isDisabled: !mirror.platforms.has(process.platform),
+  })),
+  { value: "custom", label: "Custom URL..." },
+];
 
 const NonInjectedKubectlDownloadMirror = observer(({ state }: Dependencies) => (
   <section>

@@ -48,12 +48,13 @@ const makeKubectl = (overrides: Partial<KubectlDependencies["state"]> = {}): Kub
 };
 
 describe("Kubectl.getDownloadMirror()", () => {
-  describe("when kubectlDownloadMirrorUrl is set to a non-empty string", () => {
+  describe("when downloadMirror is 'custom' and kubectlDownloadMirrorUrl is set", () => {
     let kubectl: Kubectl;
 
     beforeEach(() => {
       kubectl = makeKubectl({
         kubectlDownloadMirrorUrl: "https://my.mirror.example.com/kubectl",
+        downloadMirror: "custom",
       });
     });
 
@@ -114,7 +115,22 @@ describe("Kubectl.getDownloadMirror()", () => {
     });
   });
 
-  describe("when a custom URL is set alongside a named mirror", () => {
+  describe("when downloadMirror is 'custom' and a custom URL is set", () => {
+    let kubectl: Kubectl;
+
+    beforeEach(() => {
+      kubectl = makeKubectl({
+        kubectlDownloadMirrorUrl: "https://corp.example.com/kubectl",
+        downloadMirror: "custom",
+      });
+    });
+
+    it("uses the custom URL", () => {
+      expect((kubectl as any).url).toContain("https://corp.example.com/kubectl");
+    });
+  });
+
+  describe("when downloadMirror is 'china' and a custom URL is set", () => {
     let kubectl: Kubectl;
 
     beforeEach(() => {
@@ -124,9 +140,26 @@ describe("Kubectl.getDownloadMirror()", () => {
       });
     });
 
-    it("the custom URL takes precedence over the named mirror", () => {
-      expect((kubectl as any).url).toContain("https://corp.example.com/kubectl");
-      expect((kubectl as any).url).not.toContain(packageMirrors.get("china")!.url);
+    it("uses the named mirror's URL and ignores the custom URL", () => {
+      expect((kubectl as any).url).toContain(packageMirrors.get("china")!.url);
+      expect((kubectl as any).url).not.toContain("https://corp.example.com/kubectl");
+    });
+  });
+
+  describe("when downloadMirror is 'custom' but no custom URL is set", () => {
+    let kubectl: Kubectl;
+
+    beforeEach(() => {
+      kubectl = makeKubectl({
+        kubectlDownloadMirrorUrl: undefined,
+        downloadMirror: "custom",
+      });
+    });
+
+    it("falls back to the default mirror", () => {
+      const defaultUrl = packageMirrors.get(defaultPackageMirror)!.url;
+
+      expect((kubectl as any).url).toContain(defaultUrl);
     });
   });
 });

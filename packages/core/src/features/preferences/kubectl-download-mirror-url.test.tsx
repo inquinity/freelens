@@ -43,8 +43,8 @@ describe("kubectl-download-mirror-url preference", () => {
     builder.preferences.navigation.click("kubernetes");
   });
 
-  it("renders the custom download mirror URL input in the kubectl preferences section", () => {
-    const input = rendered.getByPlaceholderText("https://mirror.corp/kubernetes/kubectl");
+  it("renders the custom download mirror URL input", () => {
+    const input = rendered.getByPlaceholderText("Custom URL...");
 
     expect(input).toBeInTheDocument();
   });
@@ -57,28 +57,44 @@ describe("kubectl-download-mirror-url preference", () => {
     });
 
     it("the custom download mirror URL input is disabled", () => {
-      const input = rendered.getByPlaceholderText("https://mirror.corp/kubernetes/kubectl");
+      const input = rendered.getByPlaceholderText("Custom URL...");
 
       expect(input).toBeDisabled();
     });
   });
 
-  describe("when downloadKubectlBinaries is true", () => {
+  describe("when downloadKubectlBinaries is true and downloadMirror is not 'custom'", () => {
     beforeEach(() => {
       runInAction(() => {
         state.downloadKubectlBinaries = true;
+        state.downloadMirror = "default";
+      });
+    });
+
+    it("the custom download mirror URL input is disabled", () => {
+      const input = rendered.getByPlaceholderText("Custom URL...");
+
+      expect(input).toBeDisabled();
+    });
+  });
+
+  describe("when downloadKubectlBinaries is true and downloadMirror is 'custom'", () => {
+    beforeEach(() => {
+      runInAction(() => {
+        state.downloadKubectlBinaries = true;
+        state.downloadMirror = "custom";
       });
     });
 
     it("the custom download mirror URL input is enabled", () => {
-      const input = rendered.getByPlaceholderText("https://mirror.corp/kubernetes/kubectl");
+      const input = rendered.getByPlaceholderText("Custom URL...");
 
       expect(input).not.toBeDisabled();
     });
 
     describe("when a URL is typed and the field is blurred", () => {
       beforeEach(() => {
-        const input = rendered.getByPlaceholderText("https://mirror.corp/kubernetes/kubectl");
+        const input = rendered.getByPlaceholderText("Custom URL...");
 
         fireEvent.change(input, { target: { value: "https://my.mirror.example.com/kubectl" } });
         fireEvent.blur(input);
@@ -91,13 +107,11 @@ describe("kubectl-download-mirror-url preference", () => {
 
     describe("when the field is cleared and blurred", () => {
       beforeEach(() => {
-        // First set a value
-        const input = rendered.getByPlaceholderText("https://mirror.corp/kubernetes/kubectl");
+        const input = rendered.getByPlaceholderText("Custom URL...");
 
         fireEvent.change(input, { target: { value: "https://my.mirror.example.com/kubectl" } });
         fireEvent.blur(input);
 
-        // Then clear it
         fireEvent.change(input, { target: { value: "" } });
         fireEvent.blur(input);
       });

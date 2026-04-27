@@ -382,7 +382,7 @@ export class Kubectl {
   }
 
   protected getDownloadMirror(): string {
-    if (this.dependencies.state.kubectlDownloadMirrorUrl) {
+    if (this.dependencies.state.downloadMirror === "custom" && this.dependencies.state.kubectlDownloadMirrorUrl) {
       return this.dependencies.state.kubectlDownloadMirrorUrl;
     }
 
