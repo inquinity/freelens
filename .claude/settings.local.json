@@ -12,7 +12,8 @@
       "Bash(pnpm start *)",
       "Bash(git remote *)",
       "Bash(node -e ' *)",
-      "Bash(pnpm test:unit:core --testPathPattern=\"kubectl-download-mirror-url|kubectl.test\")"
+      "Bash(pnpm test:unit:core --testPathPattern=\"kubectl-download-mirror-url|kubectl.test\")",
+      "WebFetch(domain:github.com)"
     ]
   }
 }
