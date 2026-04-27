@@ -13,7 +13,19 @@
       "Bash(git remote *)",
       "Bash(node -e ' *)",
       "Bash(pnpm test:unit:core --testPathPattern=\"kubectl-download-mirror-url|kubectl.test\")",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(pnpm test:unit -- --testPathPattern=\"kubectl.test\")",
+      "Bash(pnpm test:unit -- kubectl.test)",
+      "Bash(pnpm test:unit -- navigation-to-kubernetes-preferences --updateSnapshot)",
+      "Bash(pnpm test:unit -- navigation-to-kubernetes-preferences -u)",
+      "Bash(pnpm test:unit -- kubectl-download-mirror-url.test)",
+      "Bash(pnpm test:unit -- navigation-to-kubernetes-preferences)",
+      "Bash(./node_modules/.bin/jest navigation-to-kubernetes-preferences *)",
+      "Bash(pnpm test:unit)",
+      "Bash(pnpm lint *)",
+      "Bash(pnpm biome:check -- packages/core/src/features/preferences/renderer/preference-items/kubernetes/kubectl/kubectl-download-mirror/kubectl-download-mirror.tsx packages/core/src/features/preferences/renderer/preference-items/kubernetes/kubectl/kubectl-download-mirror-url/kubectl-download-mirror-url.tsx packages/core/src/main/kubectl/kubectl.ts packages/core/src/features/user-preferences/common/preference-descriptors.injectable.ts)",
+      "Bash(pnpm dlx *)",
+      "Bash(pnpm test:unit -- \"kubectl.test|kubectl-download-mirror-url.test|navigation-to-kubernetes\")"
     ]
   }
 }
