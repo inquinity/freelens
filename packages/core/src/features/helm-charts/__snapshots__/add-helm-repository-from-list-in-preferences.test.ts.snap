@@ -292,40 +292,7 @@ exports[`add helm repository from list in preferences when navigating to prefere
                             </div>
                           </div>
                         </div>
-                      </section>
-                    </div>
-                    <div
-                      class="size-xl"
-                    />
-                    <div
-                      data-preference-item-test="kubectl-download-mirror-url"
-                    >
-                      <section>
-                        <div
-                          class="SubTitle"
-                        >
-                          Custom download mirror URL
-                           
-                        </div>
-                        <div
-                          class="Input theme round black disabled"
-                        >
-                          <label
-                            class="input-area flex gaps align-center"
-                            id=""
-                          >
-                            <input
-                              class="input box grow"
-                              disabled=""
-                              placeholder="Custom URL..."
-                              spellcheck="false"
-                              value=""
-                            />
-                          </label>
-                          <div
-                            class="input-info flex gaps"
-                          />
-                        </div>
+                        
                       </section>
                     </div>
                     <div
@@ -1119,40 +1086,7 @@ exports[`add helm repository from list in preferences when navigating to prefere
                             </div>
                           </div>
                         </div>
-                      </section>
-                    </div>
-                    <div
-                      class="size-xl"
-                    />
-                    <div
-                      data-preference-item-test="kubectl-download-mirror-url"
-                    >
-                      <section>
-                        <div
-                          class="SubTitle"
-                        >
-                          Custom download mirror URL
-                           
-                        </div>
-                        <div
-                          class="Input theme round black disabled"
-                        >
-                          <label
-                            class="input-area flex gaps align-center"
-                            id=""
-                          >
-                            <input
-                              class="input box grow"
-                              disabled=""
-                              placeholder="Custom URL..."
-                              spellcheck="false"
-                              value=""
-                            />
-                          </label>
-                          <div
-                            class="input-info flex gaps"
-                          />
-                        </div>
+                        
                       </section>
                     </div>
                     <div
@@ -1984,40 +1918,7 @@ exports[`add helm repository from list in preferences when navigating to prefere
                             </div>
                           </div>
                         </div>
-                      </section>
-                    </div>
-                    <div
-                      class="size-xl"
-                    />
-                    <div
-                      data-preference-item-test="kubectl-download-mirror-url"
-                    >
-                      <section>
-                        <div
-                          class="SubTitle"
-                        >
-                          Custom download mirror URL
-                           
-                        </div>
-                        <div
-                          class="Input theme round black disabled"
-                        >
-                          <label
-                            class="input-area flex gaps align-center"
-                            id=""
-                          >
-                            <input
-                              class="input box grow"
-                              disabled=""
-                              placeholder="Custom URL..."
-                              spellcheck="false"
-                              value=""
-                            />
-                          </label>
-                          <div
-                            class="input-info flex gaps"
-                          />
-                        </div>
+                        
                       </section>
                     </div>
                     <div
@@ -2907,40 +2808,7 @@ exports[`add helm repository from list in preferences when navigating to prefere
                             </div>
                           </div>
                         </div>
-                      </section>
-                    </div>
-                    <div
-                      class="size-xl"
-                    />
-                    <div
-                      data-preference-item-test="kubectl-download-mirror-url"
-                    >
-                      <section>
-                        <div
-                          class="SubTitle"
-                        >
-                          Custom download mirror URL
-                           
-                        </div>
-                        <div
-                          class="Input theme round black disabled"
-                        >
-                          <label
-                            class="input-area flex gaps align-center"
-                            id=""
-                          >
-                            <input
-                              class="input box grow"
-                              disabled=""
-                              placeholder="Custom URL..."
-                              spellcheck="false"
-                              value=""
-                            />
-                          </label>
-                          <div
-                            class="input-info flex gaps"
-                          />
-                        </div>
+                        
                       </section>
                     </div>
                     <div
@@ -3772,40 +3640,7 @@ exports[`add helm repository from list in preferences when navigating to prefere
                             </div>
                           </div>
                         </div>
-                      </section>
-                    </div>
-                    <div
-                      class="size-xl"
-                    />
-                    <div
-                      data-preference-item-test="kubectl-download-mirror-url"
-                    >
-                      <section>
-                        <div
-                          class="SubTitle"
-                        >
-                          Custom download mirror URL
-                           
-                        </div>
-                        <div
-                          class="Input theme round black disabled"
-                        >
-                          <label
-                            class="input-area flex gaps align-center"
-                            id=""
-                          >
-                            <input
-                              class="input box grow"
-                              disabled=""
-                              placeholder="Custom URL..."
-                              spellcheck="false"
-                              value=""
-                            />
-                          </label>
-                          <div
-                            class="input-info flex gaps"
-                          />
-                        </div>
+                        
                       </section>
                     </div>
                     <div
@@ -4637,40 +4472,7 @@ exports[`add helm repository from list in preferences when navigating to prefere
                             </div>
                           </div>
                         </div>
-                      </section>
-                    </div>
-                    <div
-                      class="size-xl"
-                    />
-                    <div
-                      data-preference-item-test="kubectl-download-mirror-url"
-                    >
-                      <section>
-                        <div
-                          class="SubTitle"
-                        >
-                          Custom download mirror URL
-                           
-                        </div>
-                        <div
-                          class="Input theme round black disabled"
-                        >
-                          <label
-                            class="input-area flex gaps align-center"
-                            id=""
-                          >
-                            <input
-                              class="input box grow"
-                              disabled=""
-                              placeholder="Custom URL..."
-                              spellcheck="false"
-                              value=""
-                            />
-                          </label>
-                          <div
-                            class="input-info flex gaps"
-                          />
-                        </div>
+                        
                       </section>
                     </div>
                     <div
@@ -5492,40 +5294,7 @@ exports[`add helm repository from list in preferences when navigating to prefere
                             </div>
                           </div>
                         </div>
-                      </section>
-                    </div>
-                    <div
-                      class="size-xl"
-                    />
-                    <div
-                      data-preference-item-test="kubectl-download-mirror-url"
-                    >
-                      <section>
-                        <div
-                          class="SubTitle"
-                        >
-                          Custom download mirror URL
-                           
-                        </div>
-                        <div
-                          class="Input theme round black disabled"
-                        >
-                          <label
-                            class="input-area flex gaps align-center"
-                            id=""
-                          >
-                            <input
-                              class="input box grow"
-                              disabled=""
-                              placeholder="Custom URL..."
-                              spellcheck="false"
-                              value=""
-                            />
-                          </label>
-                          <div
-                            class="input-info flex gaps"
-                          />
-                        </div>
+                        
                       </section>
                     </div>
                     <div
@@ -6391,40 +6160,7 @@ exports[`add helm repository from list in preferences when navigating to prefere
                             </div>
                           </div>
                         </div>
-                      </section>
-                    </div>
-                    <div
-                      class="size-xl"
-                    />
-                    <div
-                      data-preference-item-test="kubectl-download-mirror-url"
-                    >
-                      <section>
-                        <div
-                          class="SubTitle"
-                        >
-                          Custom download mirror URL
-                           
-                        </div>
-                        <div
-                          class="Input theme round black disabled"
-                        >
-                          <label
-                            class="input-area flex gaps align-center"
-                            id=""
-                          >
-                            <input
-                              class="input box grow"
-                              disabled=""
-                              placeholder="Custom URL..."
-                              spellcheck="false"
-                              value=""
-                            />
-                          </label>
-                          <div
-                            class="input-info flex gaps"
-                          />
-                        </div>
+                        
                       </section>
                     </div>
                     <div
@@ -7358,40 +7094,7 @@ exports[`add helm repository from list in preferences when navigating to prefere
                             </div>
                           </div>
                         </div>
-                      </section>
-                    </div>
-                    <div
-                      class="size-xl"
-                    />
-                    <div
-                      data-preference-item-test="kubectl-download-mirror-url"
-                    >
-                      <section>
-                        <div
-                          class="SubTitle"
-                        >
-                          Custom download mirror URL
-                           
-                        </div>
-                        <div
-                          class="Input theme round black disabled"
-                        >
-                          <label
-                            class="input-area flex gaps align-center"
-                            id=""
-                          >
-                            <input
-                              class="input box grow"
-                              disabled=""
-                              placeholder="Custom URL..."
-                              spellcheck="false"
-                              value=""
-                            />
-                          </label>
-                          <div
-                            class="input-info flex gaps"
-                          />
-                        </div>
+                        
                       </section>
                     </div>
                     <div
@@ -8257,40 +7960,7 @@ exports[`add helm repository from list in preferences when navigating to prefere
                             </div>
                           </div>
                         </div>
-                      </section>
-                    </div>
-                    <div
-                      class="size-xl"
-                    />
-                    <div
-                      data-preference-item-test="kubectl-download-mirror-url"
-                    >
-                      <section>
-                        <div
-                          class="SubTitle"
-                        >
-                          Custom download mirror URL
-                           
-                        </div>
-                        <div
-                          class="Input theme round black disabled"
-                        >
-                          <label
-                            class="input-area flex gaps align-center"
-                            id=""
-                          >
-                            <input
-                              class="input box grow"
-                              disabled=""
-                              placeholder="Custom URL..."
-                              spellcheck="false"
-                              value=""
-                            />
-                          </label>
-                          <div
-                            class="input-info flex gaps"
-                          />
-                        </div>
+                        
                       </section>
                     </div>
                     <div

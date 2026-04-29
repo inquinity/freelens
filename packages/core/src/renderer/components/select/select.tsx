@@ -15,6 +15,7 @@ import { action, computed, makeObservable } from "mobx";
 import { observer } from "mobx-react";
 import React from "react";
 import ReactSelect, { components, createFilter } from "react-select";
+import CreatableSelect from "react-select/creatable";
 import activeThemeInjectable from "../../themes/active.injectable";
 
 import type { ObservableHashSet, StrictReactNode } from "@freelensapp/utilities";
@@ -67,10 +68,11 @@ export interface SelectProps<
   value?: PropsValue<Value>;
   options: NonNullable<ReactSelectProps<Option, IsMulti, Group>["options"]> | LegacyAutoConvertedOptions;
 
-  /**
-   * @deprecated This option does nothing
-   */
+  /** When true, renders CreatableSelect allowing users to type and create new options. */
   isCreatable?: boolean;
+  onCreateOption?: (inputValue: string) => void;
+  formatCreateLabel?: (inputValue: string) => React.ReactNode;
+  isValidNewOption?: (inputValue: string) => boolean;
 
   /**
    * @deprecated We will always auto convert options if they are of type `string`
@@ -215,8 +217,13 @@ class NonInjectedSelect<
       isMulti,
       id: inputId,
       onChange,
+      isCreatable,
+      onCreateOption,
+      filterOption: customFilterOption,
       ...props
     } = this.props;
+
+    const Component = (isCreatable ? CreatableSelect : ReactSelect) as unknown as typeof CreatableSelect;
 
     const convertedOptions = options.map((option) =>
       typeof option === "string"
@@ -232,7 +239,7 @@ class NonInjectedSelect<
     }
 
     return (
-      <ReactSelect
+      <Component
         {...props}
         styles={{
           menuPortal: (styles) => ({
@@ -243,14 +250,15 @@ class NonInjectedSelect<
         }}
         instanceId={inputId}
         inputId={inputId}
-        filterOption={defaultFilter} // This is done because the default filter crashes on symbols
+        filterOption={customFilterOption ?? defaultFilter}
         isMulti={isMulti}
         options={convertedOptions}
         value={this.findSelectedPropsValue(value, convertedOptions, isMulti)}
         onKeyDown={this.onKeyDown}
         className={cssNames("Select", this.themeClass, className)}
         classNamePrefix="Select"
-        onChange={action(onChange)} // This is done so that all changes are actionable
+        onChange={action(onChange)}
+        onCreateOption={onCreateOption ? action(onCreateOption) : undefined}
         components={{
           ...components,
           Menu: ({ className, ...props }) => (
