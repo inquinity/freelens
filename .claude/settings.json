@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm build:di)",
+      "Bash(node_modules/.bin/jest *)",
+      "Bash(/Users/robert/dev/oss/freelens/packages/core/node_modules/.bin/jest kubectl-download-mirror-url.test)",
+      "Bash(pnpm --filter freelens run build:resources)",
+      "Bash(find /Users/robert/dev/oss/freelens/node_modules/.pnpm/react-select@5.10.2*/node_modules/react-select/dist/declarations/src -name \"Creatable*\")",
+      "Bash(find /Users/robert/dev/oss/freelens/node_modules/.pnpm/react-select@5.10.2*/node_modules/react-select/dist/declarations/src -name \"useCreatable.d.ts\")"
+    ]
+  }
+}

@@ -288,7 +288,44 @@ when downloadKubectlBinaries is false. Empty string saves as undefined. No migra
 
 ---
 
-## 8. Observations & Issues (Running)
+## 8. UI Iteration History
+
+### Iteration 1 — Standalone text box (commit b124ebf6)
+
+**What was built**: A free-text input below the mirror dropdown with placeholder `https://mirror.corp/kubernetes/kubectl`. Always visible, always editable (disabled only when `downloadKubectlBinaries === false`). The `getDownloadMirror()` function returned `kubectlDownloadMirrorUrl` unconditionally if it was set, overriding whatever the mirror dropdown showed.
+
+**Problems found (by the /simplify review)**:
+
+| Problem | Root cause |
+|---------|-----------|
+| `InputValidators.isUrl` never fired | Validator has an internal `condition: ({ type }) => type === "url"` gate — requires `<Input type="url">` to activate. The Input had no `type` prop. Validation silently disabled. |
+| No Enter-key save | Only `onBlur` was wired. Standard UX expects Enter to also commit. |
+| `getDownloadMirror()` silently overrode named mirrors | If a user typed a URL, then switched back to "Default (Google)", the custom URL still won. No way to "use default again" short of clearing the field. |
+| No visual connection to the mirror dropdown | The two controls looked unrelated. Users had no indication the text field was an override for the dropdown. |
+
+**Why these were missed**: The architecture agent and frontend agent each implemented their own piece without a unified UX review. The backend agent correctly wired `getDownloadMirror()` but didn't model the user interaction of "switch back to a named mirror." The review agent caught the `isUrl` bug and missing Enter handler but not the silent-override semantic problem. No full end-to-end UX walkthrough was performed before the code review phase.
+
+---
+
+### Iteration 2 — Integrated dropdown (current: post-plan implementation)
+
+**What was built**: "Custom URL..." added as a third option in the mirror dropdown. The text input below is now gated — enabled only when `downloadMirror === "custom"`, disabled otherwise. `getDownloadMirror()` only uses the custom URL when `downloadMirror === "custom"`. Custom HTTPS-only validator added inline. Enter-key save added. `fromStore` fixed to accept "custom" as a valid mirror key (without this, MobX's storage reaction roundtrip silently reset "custom" back to `defaultPackageMirror`).
+
+**Problem found by user after visual inspection**:
+
+The dropdown option label is `"Custom URL..."` and the text input placeholder is also `"Custom URL..."`. To a user, this looks like the text input is the same control duplicated — especially because the dropdown selection and the placeholder text are visually identical strings. The user concluded the text input was the "old" standalone box that should have been removed.
+
+**Why was this missed**:
+1. **Focus was on behavior, not copy** — the plan specified behavior (enabled/disabled, validation, save on blur/Enter). Placeholder text was treated as a minor detail and inherited from the dropdown option label without independent review.
+2. **No visual diff review** — changes were validated by running the tests and confirming the build succeeded. Nobody looked at the rendered UI and asked "do these two 'Custom URL...' labels make sense side by side?"
+3. **Agents don't self-audit UX copy** — both the frontend agent (wrote the component) and the review agent (checked code quality) operated on source code, not on a rendered screenshot. UX copy review requires seeing the actual UI.
+4. **The right question wasn't asked** — a good UX review would ask: "If I'm a first-time user, what does each element tell me?" The dropdown option says "Custom URL..." (meaning: switch to custom mode). The placeholder also says "Custom URL..." (meaning: hint about what to type). They mean different things but use the same words.
+
+**Fix**: Change the URL input placeholder from `"Custom URL..."` to `"https://mirror.example.com/kubectl"` so the two controls are visually distinct and the placeholder communicates what format the URL should take.
+
+---
+
+## 9. Observations & Issues (Running)
 
 *Append here whenever something unexpected happens, a decision is made, or a correction is needed.*
 
@@ -296,6 +333,8 @@ when downloadKubectlBinaries is false. Empty string saves as undefined. No migra
 |------|-------|-------------|
 | 2026-04-23 | Setup | Skill files placed in `.claude/skills/` — Claude Code requires `.claude/commands/` for slash command registration. Low impact; manual invocation works. |
 | 2026-04-23 | Setup | `pnpm start` failed on first attempt — binary at `dist/mac-arm64/` does not exist until `pnpm build:app:dir` is run. Not documented in AGENTS.md. Added to skill file. |
+| 2026-04-27 | UI review | `fromStore` for `downloadMirror` rejected "custom" (not in `packageMirrors` map) — MobX storage reaction roundtripped the value back to `defaultPackageMirror`. Required explicit "custom" allowance in the `fromStore` guard. |
+| 2026-04-27 | UI review | Placeholder `"Custom URL..."` on text input is visually identical to the dropdown option label. User concluded the text input was redundant. Fix: use a concrete URL example as placeholder. |
 
 ---
 
