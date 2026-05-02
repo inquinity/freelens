@@ -75,6 +75,38 @@ describe("kubectl-download-mirror preference", () => {
     it("shows a validation error message", () => {
       expect(rendered.getByText("Must be a valid HTTPS URL")).toBeInTheDocument();
     });
+
+    describe("when Enter is pressed", () => {
+      beforeEach(() => {
+        const input = rendered.container.querySelector("#download-mirror-input") as HTMLInputElement;
+
+        fireEvent.keyDown(input, { key: "Enter" });
+      });
+
+      it("does not change downloadMirror away from default", () => {
+        expect(state.downloadMirror).toBe("default");
+      });
+
+      it("does not save a kubectlDownloadMirrorUrl", () => {
+        expect(state.kubectlDownloadMirrorUrl).toBeUndefined();
+      });
+
+      it("applies an error class to the select container", () => {
+        expect(rendered.container.querySelector(".download-mirror-error")).toBeInTheDocument();
+      });
+
+      describe("when the user starts typing again", () => {
+        beforeEach(() => {
+          const input = rendered.container.querySelector("#download-mirror-input") as HTMLInputElement;
+
+          fireEvent.change(input, { target: { value: "https://fixed.example.com" } });
+        });
+
+        it("clears the error class", () => {
+          expect(rendered.container.querySelector(".download-mirror-error")).not.toBeInTheDocument();
+        });
+      });
+    });
   });
 
   describe("when typing a valid HTTPS URL into the select input", () => {
@@ -90,6 +122,22 @@ describe("kubectl-download-mirror preference", () => {
 
     it("does not show a validation error", () => {
       expect(rendered.queryByText("Must be a valid HTTPS URL")).not.toBeInTheDocument();
+    });
+
+    describe("when Enter is pressed", () => {
+      beforeEach(() => {
+        const input = rendered.container.querySelector("#download-mirror-input") as HTMLInputElement;
+
+        fireEvent.keyDown(input, { key: "Enter" });
+      });
+
+      it("sets downloadMirror to 'custom'", () => {
+        expect(state.downloadMirror).toBe("custom");
+      });
+
+      it("saves the typed URL", () => {
+        expect(state.kubectlDownloadMirrorUrl).toBe("https://corp.example.com/kubectl");
+      });
     });
   });
 
