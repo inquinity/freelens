@@ -109,6 +109,22 @@ describe("kubectl-download-mirror preference", () => {
     });
   });
 
+  describe("when typing an HTTPS URL containing whitespace", () => {
+    beforeEach(() => {
+      const input = rendered.container.querySelector("#download-mirror-input") as HTMLInputElement;
+
+      fireEvent.change(input, { target: { value: "https://me .com" } });
+    });
+
+    it("does not show a 'Use custom:' create option", () => {
+      expect(rendered.queryByText(/^Use custom:/)).not.toBeInTheDocument();
+    });
+
+    it("shows a validation error message", () => {
+      expect(rendered.getByText("Must be a valid HTTPS URL")).toBeInTheDocument();
+    });
+  });
+
   describe("when typing a valid HTTPS URL into the select input", () => {
     beforeEach(() => {
       const input = rendered.container.querySelector("#download-mirror-input") as HTMLInputElement;

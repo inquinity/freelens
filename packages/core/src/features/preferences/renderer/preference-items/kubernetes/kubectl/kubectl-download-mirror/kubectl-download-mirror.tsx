@@ -20,8 +20,17 @@ interface Dependencies {
 }
 
 const isValidHttpsUrl = (val: string): boolean => {
+  if (/\s/.test(val)) return false;
   try {
-    return new URL(val).protocol === "https:";
+    const url = new URL(val);
+
+    return (
+      url.protocol === "https:" &&
+      url.hostname.length > 1 &&         // rejects "." and single-char nonsense
+      !/^\.+$/.test(url.hostname) &&     // rejects dot-only hosts like "."
+      !url.username &&                   // rejects embedded credentials
+      !url.password
+    );
   } catch {
     return false;
   }
