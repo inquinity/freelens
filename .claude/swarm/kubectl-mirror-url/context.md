@@ -5,7 +5,7 @@
 **Date started**: 2026-04-20  
 **Current date**: 2026-04-23  
 **Project**: [freelensapp/freelens](https://github.com/freelensapp/freelens)  
-**Branch**: `rda`  
+**Branch**: `custom-mirror-url`  
 **Experiment slug**: `kubectl-mirror-url`
 
 ---
@@ -133,7 +133,7 @@ pnpm build:app:dir → pnpm start            (package + launch)
 ```
 Node: v22.22.2  (required: 22.22.1)  ✓
 pnpm: 10.33.0                         ✓
-Branch: rda (0 commits ahead of main)
+Branch: custom-mirror-url (rebased on main)
 .claude/ directory: tracked locally, not in .gitignore
 ```
 

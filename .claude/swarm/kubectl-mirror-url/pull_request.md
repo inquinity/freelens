@@ -3,7 +3,7 @@
 **PR Title:** Add custom kubectl download mirror URL preference
 
 **Base branch:** `main` (freelensapp/freelens)
-**Head branch:** `inquinity/freelens:rda`
+**Head branch:** `inquinity/freelens:custom-mirror-url`
 
 ---
 
