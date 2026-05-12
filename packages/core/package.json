@@ -1,6 +1,6 @@
 {
   "name": "@freelensapp/core",
-  "version": "1.8.2-0",
+  "version": "1.10.0-0",
   "description": "Freelens Core",
   "keywords": [],
   "homepage": "https://freelens.app",
@@ -175,10 +175,10 @@
     "winston-transport": "^4.9.0",
     "winston-transport-browserconsole": "^1.0.5",
     "ws": "^8.20.0",
-    "zod": "^4.3.6"
+    "zod": "^4.4.1"
   },
   "devDependencies": {
-    "@async-fn/jest": "1.6.5",
+    "@async-fn/jest": "1.7.0",
     "@freelensapp/messaging-fake-bridge": "workspace:^",
     "@freelensapp/react-testing-library-discovery": "workspace:^",
     "@freelensapp/test-utils": "workspace:^",
@@ -201,7 +201,7 @@
     "@types/js-yaml": "^4.0.9",
     "@types/lodash": "^4.17.24",
     "@types/memorystream": "^0.3.4",
-    "@types/node": "~22.19.17",
+    "@types/node": "~24.12.2",
     "@types/proper-lockfile": "^4.1.4",
     "@types/randomcolor": "^0.5.9",
     "@types/react": "^17.0.91",
@@ -222,7 +222,7 @@
     "@types/ws": "^8.18.1",
     "circular-dependency-plugin": "^5.2.2",
     "css-loader": "^6.11.0",
-    "electron": "^39.8.9",
+    "electron": "^41.3.0",
     "fork-ts-checker-webpack-plugin": "^9.1.0",
     "glob": "^13.0.6",
     "identity-obj-proxy": "^3.0.0",
@@ -254,7 +254,7 @@
     "webpack-node-externals": "^3.0.0"
   },
   "engines": {
-    "node": "^22.0.0"
+    "node": "^24.0.0"
   },
   "publishConfig": {
     "access": "public",
