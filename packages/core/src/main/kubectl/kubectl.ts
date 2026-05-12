@@ -394,6 +394,8 @@ export class Kubectl {
       if (custom) {
         return custom;
       }
+
+      return packageMirrors.get(defaultPackageMirror)!.url;
     }
 
     const { url } =
